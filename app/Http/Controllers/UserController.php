@@ -73,6 +73,7 @@ class UserController extends Controller
                     ->orWhere('email', 'like', '%' . $searchFilter . '%');
             });
         }
+        $query->where('active', true);
         $query->orderBy($sortBy, $sortOrder);
         $users = $query->paginate($perPage, ['*'], 'page', $page);
 
